@@ -8,14 +8,14 @@ class V1::BudgetsController < ApplicationController
 
 
   def show
+    render json: @budget, include: 'detail_budgets', status: :ok
   end
 
   def create
     @budget = Budget.new(require_params)
     if @budget.save
-      format.json { render :show, status: :created, location: @budget }
-    else
-      format.json { render json: @budget.errors, status: :unprocessable_entity }
+      format.json { render json: {}, status: :ok}
+      format.html
     end
   end
 
