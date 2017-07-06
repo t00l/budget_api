@@ -14,8 +14,7 @@ class V1::BudgetsController < ApplicationController
   def create
     @budget = Budget.new(require_params)
     if @budget.save
-      format.json { render json: {}, status: :ok}
-      format.html
+      render :show
     end
   end
 
